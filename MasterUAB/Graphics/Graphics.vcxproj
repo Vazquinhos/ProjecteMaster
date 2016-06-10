@@ -63,6 +63,7 @@
     <ClCompile Include="SceneRender\ApplyFiltersSceneRendererCommand.cpp" />
     <ClCompile Include="SceneRender\CaptureFrameBufferSceneRendererCommand.cpp" />
     <ClCompile Include="SceneRender\ClearSceneRendererCommand.cpp" />
+    <ClCompile Include="SceneRender\DeferredPrintShadowSceneRendererCommand.cpp" />
     <ClCompile Include="SceneRender\DeferredShadingSceneRendererCommand.cpp" />
     <ClCompile Include="SceneRender\DisableAlphaBlendSceneRendererCommand.cpp" />
     <ClCompile Include="SceneRender\DrawQuadRendererCommand.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="SceneRender\ApplyFiltersSceneRendererCommand.h" />
     <ClInclude Include="SceneRender\CaptureFrameBufferSceneRendererCommand.h" />
     <ClInclude Include="SceneRender\ClearSceneRendererCommand.h" />
+    <ClInclude Include="SceneRender\DeferredPrintShadowSceneRendererCommand.h" />
     <ClInclude Include="SceneRender\DeferredShadingSceneRendererCommand.h" />
     <ClInclude Include="SceneRender\DisableAlphaBlendSceneRendererCommand.h" />
     <ClInclude Include="SceneRender\DrawQuadRendererCommand.h" />

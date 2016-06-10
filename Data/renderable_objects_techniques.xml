@@ -26,6 +26,9 @@
 		<renderable_object_technique name="bump_env" technique="generate_shadowmap_bump_technique"/>
 		<renderable_object_technique name="animated" technique="generate_shadowmap_animated_technique"/>
 	</pool_renderable_object_technique>	
+	<pool_renderable_object_technique name="deferred_shading_shadow">
+		<default_technique vertex_type="MV_POSITION4_NORMAL_TEXTURE_VERTEX" technique="deff_technique"/>
+	</pool_renderable_object_technique>	
 	<pool_renderable_object_technique name="deferred_shading">
 		<renderable_object_technique name="fog" technique="fog_technique"/>
 	</pool_renderable_object_technique>	

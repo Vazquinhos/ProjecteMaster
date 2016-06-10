@@ -4,7 +4,7 @@
 	
 	<set_depth_stencil_state name="set_depth_stencil_TT1" enable_z_test="true" write_z_buffer="true"/>
 	<set_pool_renderable_objects_technique name="set pool generate shadowmap" pool="generate_shadowmap_pool"/>
-	<generate_shadow_maps name="generate shadowmap"/>
+	<generate_shadow_maps material="BlurShadowMaterial" name="generate shadowmap"/>
 	
 	<set_matrices name="set matrices"/>
 	
@@ -22,6 +22,20 @@
 	<render_layer name="render layer alpha_objects" layer="alpha_objects" active="true"/>
 	
 	<unset_render_target name="unset render target"/>
+	
+	<!----------------------MIERDA URI------------------------------->
+	
+	<clear name="clear TF defferred shadow shading" render_target="true" depth_stencil="false"/>
+	<set_depth_stencil_state name="set depth stencil FF defferred shadow shading" enable_z_test="false" write_z_buffer="false"/>
+	
+	<set_pool_renderable_objects_technique name="set_pool_defferred_shadow_shading" pool="deferred_shading_shadow"/>
+	
+	<render_shadow_shading name="render defferred shadow shading">
+		<texture stage_id="0" file="DepthMapTexture" load_file="false"/>
+	</render_shadow_shading>
+	
+	<!----------------------------------------------------->
+	
 	
 	<clear name="clear TF defferred" render_target="true" depth_stencil="false"/>
 	<set_depth_stencil_state name="set depth stencil FF defferred" enable_z_test="false" write_z_buffer="false"/>

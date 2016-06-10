@@ -35,6 +35,7 @@ CLight::CLight(CXMLTreeNode &TreeNode) : CNamed(TreeNode), C3DElement(TreeNode)
 	m_Enabled = TreeNode.GetBoolProperty("enabled");
 	m_GenerateShadowMap = TreeNode.GetBoolProperty("generate_shadow_map");
 	CXMLTreeNode l_Input = TreeNode["layer"];
+
 	if (l_Input.Exists())
 	{
 		if (l_Input.GetName() == std::string("layer"))
@@ -42,8 +43,14 @@ CLight::CLight(CXMLTreeNode &TreeNode) : CNamed(TreeNode), C3DElement(TreeNode)
 			m_Layers.push_back(UABEngine.GetLayerManager()->GetResource(l_Input.GetPszProperty("layer")));
 		}
 	}
+
 	if (m_GenerateShadowMap){
-		m_ShadowMap = new CDynamicTexture("shadowmap", (int)TreeNode.GetFloatProperty("shadow_map_width"), (int)TreeNode.GetFloatProperty("shadow_map_height"), true, TreeNode.GetPszProperty("shadow_map_format"));
+		int l_Width = (int)TreeNode.GetFloatProperty("shadow_map_width");
+		int l_Height = (int)TreeNode.GetFloatProperty("shadow_map_height");
+		std::string l_Format = TreeNode.GetPszProperty("shadow_map_format");
+
+		m_ShadowMap = new CDynamicTexture("shadowmap", l_Width, l_Height, true, l_Format);
+		m_ShadowMapPrint = new CDynamicTexture("shadowmap_print", l_Width, l_Height, true, l_Format);
 		//m_ShadowMaskTexture = new CTexture();
 		m_ShadowMaskTexture = nullptr;
 	}

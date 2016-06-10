@@ -3,6 +3,7 @@
 
 #include "Utils\Named.h"
 #include "3DElement\3DElement.h"
+#include "Utils.h"
 
 #include <vector>
 
@@ -52,6 +53,7 @@ protected:
 	void Destroy();
 
 public:
+	UAB_BUILD_GET_SET(CDynamicTexture*, ShadowMapPrint);
 
 	CLight(CXMLTreeNode &TreeNode);
 	CLight(std::string _name);
@@ -59,7 +61,6 @@ public:
 	virtual ~CLight();
 	//UAB_BUILD_GET_SET_BY_REFERENCE(Vect3f, Position);
 	const CColor & GetColor() const{ return m_Color; }
-
 	float GetIntensity()const { return m_Intensity; }
 	float GetStartRangeAttenuation()const { return m_StartRangeAttenuation; }
 	float GetEndRangeAttenuation()const { return m_EndRangeAttenuation; }

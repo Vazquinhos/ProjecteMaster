@@ -125,7 +125,12 @@
 	
 	<vertex_shader name="generate_shadowmap_vs3" file="Data/Effects/UAB_SHADOWMAP.fx" shader_model="vs_4_0" entry_point="mainVS" vertex_type="MV_POSITION_WEIGHT_INDICES_NORMAL_TEXTURE_VERTEX" preprocessor="HAS_WEIGHT_INDICES;HAS_NORMAL;HAS_UV"/>
 	<pixel_shader name="generate_shadowmap_ps3" file="Data/Effects/UAB_SHADOWMAP.fx" shader_model="ps_4_0" entry_point="mainPS" preprocessor="HAS_WEIGHT_INDICES;HAS_NORMAL;HAS_UV"/>
-	<effect_technique name="generate_shadowmap_animated_technique" vertex_shader="generate_shadowmap_vs3" pixel_shader="generate_shadowmap_ps3"/>	
+	<effect_technique name="generate_shadowmap_animated_technique" vertex_shader="generate_shadowmap_vs3" pixel_shader="generate_shadowmap_ps3"/>
+	
+	<!-- PRINT SHADOWMAP -->
+	<vertex_shader name="print_shadowmap_vs" file="Data/Effects/UAB_SHADOWMAP_PRINT.fx" shader_model="vs_4_0" entry_point="mainVS" vertex_type="MV_POSITION4_COLOR_TEXTURE_VERTEX" preprocessor=""/>
+	<pixel_shader name="print_shadowmap_ps" file="Data/Effects/UAB_SHADOWMAP_PRINT.fx" shader_model="ps_4_0" entry_point="mainPS" preprocessor=""/>
+	<effect_technique name="print_shadowmap_technique" vertex_shader="print_shadowmap_vs" pixel_shader="print_shadowmap_ps"/>
 	
 	<!-- TRIGGERS -->
 	<vertex_shader name="trigger_vs" file="Data/Effects/UAB_UBER_FORWARD_SHADER.fx" shader_model="vs_4_0" entry_point="mainVS" vertex_type="MV_POSITION_NORMAL_TEXTURE_VERTEX" preprocessor="HAS_NORMAL;HAS_UV"/>

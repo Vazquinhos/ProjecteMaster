@@ -230,6 +230,9 @@
     <ClCompile Include="SceneRender\RenderDebugFrustumSceneRendererCommand.cpp">
       <Filter>SceneRender</Filter>
     </ClCompile>
+    <ClCompile Include="SceneRender\DeferredPrintShadowSceneRendererCommand.cpp">
+      <Filter>SceneRender</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContextManager">
@@ -540,6 +543,9 @@
       <Filter>Particles</Filter>
     </ClInclude>
     <ClInclude Include="SceneRender\RenderDebugFrustumSceneRendererCommand.h">
+      <Filter>SceneRender</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneRender\DeferredPrintShadowSceneRendererCommand.h">
       <Filter>SceneRender</Filter>
     </ClInclude>
   </ItemGroup>

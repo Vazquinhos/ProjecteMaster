@@ -4,26 +4,36 @@
 #include "Globals.fxh"
 #include "Samplers.fxh"
 
-float4 shadowMapCalc(float3 l_WorldPosition)
+float shadowMapCalc(float3 l_WorldPosition)
 {
 	if(m_UseShadowMapArray[0]==1.0)
 	{
 		float4 l_LightViewPosition=mul(float4(l_WorldPosition, 1), m_LightView[0]);
+		float k = 50;
 		l_LightViewPosition=mul(l_LightViewPosition, m_LightProjection[0]);
 		float2 l_ProjectedLightCoords=float2(((l_LightViewPosition.x/l_LightViewPosition.w)/2.0f)+0.5f, ((-l_LightViewPosition.y/l_LightViewPosition.w)/2.0f)+0.5f);
 		float l_DepthShadowMap=T6Texture.Sample(S6Sampler, l_ProjectedLightCoords).r;
 		float l_LightDepth=l_LightViewPosition.z/l_LightViewPosition.w;
-		float m_ShadowMapBias = 0.001f;
-		l_DepthShadowMap=l_DepthShadowMap+m_ShadowMapBias;
+		float m_ShadowMapBias = 0.01f;
+		//l_DepthShadowMap=l_DepthShadowMap+m_ShadowMapBias;
 		if((saturate(l_ProjectedLightCoords.x)==l_ProjectedLightCoords.x) && (saturate(l_ProjectedLightCoords.y)==l_ProjectedLightCoords.y))
 		{
-			if(l_LightDepth>l_DepthShadowMap)
+			/*if(l_LightDepth>l_DepthShadowMap)
 			{
 				return float4(0,0,0,1);
-			}
+			}*/
+			//z es shadowmap
+			//d es pixel
+			
+			
+			float auxShadow = exp(k*(l_DepthShadowMap)) * exp(-k*l_LightDepth);
+			//float auxShadow = exp(k*(l_DepthShadowMap)) * exp(-k*l_LightDepth);
+			return auxShadow;
+			return float4(auxShadow,auxShadow,auxShadow,1);
 		}
 	}
-	return float4(1,1,1,1);
+	return 1;
+	//return float4(1,1,1,1);
 }
 
 
