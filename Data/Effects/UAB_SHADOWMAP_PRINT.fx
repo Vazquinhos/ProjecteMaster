@@ -23,10 +23,6 @@ PS_INPUT mainVS(VS_INPUT IN)
 	return l_Output; 
 }
 
-float3 Texture2Normal(float3 Color)
-{
-	return (Color-0.5)*2;
-}
 
 float3 GetPositionFromZDepthViewInViewCoordinates(float ZDepthView, float2 UV, float4x4 InverseProjection)
 {
@@ -49,15 +45,9 @@ float3 GetPositionFromZDepthView(float ZDepthView, float2 UV, float4x4 InverseVi
 
 float4 mainPS(PS_INPUT IN) : SV_Target
 {		
-	return float4(T7Texture.Sample(S7Sampler, IN.UV).xyz,1);
-	float l_Depth=T3Texture.Sample(S3Sampler, IN.UV).r;
+	//return float4(0.5,0,0,1);
+	float l_Depth=T0Texture.Sample(S0Sampler, IN.UV).r;
 	float3 l_WorldPosition=GetPositionFromZDepthView(l_Depth, IN.UV, m_InverseView, m_InverseProjection);
-	float3 Nn=Texture2Normal(T2Texture.Sample(S2Sampler, IN.UV).xyz);
-	float4 l_albedo = T0Texture.Sample(S0Sampler, IN.UV);
-	float4 lightmap = T1Texture.Sample(S1Sampler, IN.UV);
-	float l_SpecularFactor = l_albedo.w;
-	float l_SpecularPower = lightmap.w*100;
-	float4 l_Out = applyLights(l_WorldPosition, Nn, l_albedo, 0, l_SpecularPower, l_SpecularFactor);
-	return l_Out * shadowMapCalc(l_WorldPosition).x;
-	//return l_Out * T6Texture.Sample(S6Sampler, IN.UV);
+	//return float4(1,0,0,1);
+	return shadowMapCalc(l_WorldPosition);
 }

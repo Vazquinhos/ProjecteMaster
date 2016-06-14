@@ -4,7 +4,7 @@
 #include "Globals.fxh"
 #include "Samplers.fxh"
 
-float shadowMapCalc(float3 l_WorldPosition)
+float4 shadowMapCalc(float3 l_WorldPosition)
 {
 	if(m_UseShadowMapArray[0]==1.0)
 	{
@@ -28,12 +28,13 @@ float shadowMapCalc(float3 l_WorldPosition)
 			
 			float auxShadow = exp(k*(l_DepthShadowMap)) * exp(-k*l_LightDepth);
 			//float auxShadow = exp(k*(l_DepthShadowMap)) * exp(-k*l_LightDepth);
-			return auxShadow;
+			//return auxShadow;
+			auxShadow = saturate(auxShadow);
 			return float4(auxShadow,auxShadow,auxShadow,1);
 		}
 	}
-	return 1;
-	//return float4(1,1,1,1);
+	//return 1;
+	return float4(1,1,1,1);
 }
 
 

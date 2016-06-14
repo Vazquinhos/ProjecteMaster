@@ -46,10 +46,12 @@ void CDeferredPrintShadowSceneRendererCommand::Execute(CRenderManager &_RenderMa
 		ID3D11Buffer *l_LightConstantBufferVS = l_EffectTechnique->GetVertexShader()->GetConstantBuffer(LIGHT_CONSTANT_BUFFER_ID);
 		ID3D11Buffer *l_LightConstantBufferPS = l_EffectTechnique->GetPixelShader()->GetConstantBuffer(LIGHT_CONSTANT_BUFFER_ID);
 
+
 		_RenderManager.GetDeviceContext()->UpdateSubresource(l_LightConstantBufferVS, 0, NULL, &(CEffectManager::m_LightParameters), 0, 0);
 		_RenderManager.GetDeviceContext()->UpdateSubresource(l_LightConstantBufferPS, 0, NULL, &(CEffectManager::m_LightParameters), 0, 0);
 
 		_RenderManager.GetContextManager()->SetRenderTargets(1, &l_VectorShadowMaps[j], nullptr);
+		_RenderManager.Clear(true, true);
 		_RenderManager.DrawScreenQuad(l_EffectTechnique, NULL, 0, 0, 1, 1, CColor(1.f, 1.f, 1.f, 1.f));
 		_RenderManager.GetContextManager()->UnsetRenderTargets();
 	}

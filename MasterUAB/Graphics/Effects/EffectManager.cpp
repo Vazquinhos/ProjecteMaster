@@ -157,14 +157,17 @@ void CEffectManager::SetLightConstants(unsigned int IdLight, CLight *Light)
 	if (Light->GetGenerateShadowMap())
 	{
 		CDynamicTexture *l_ShadowMap = Light->GetShadowMap();
-		CTexture *l_ShadowMask = Light->GetShadowMaskTexture();
+		CDynamicTexture *l_ShadowMapPrint = Light->GetShadowMapPrint();
+		//CTexture *l_ShadowMask = Light->GetShadowMaskTexture();
 		CEffectManager::m_LightParameters.m_UseShadowMap[IdLight] = 1.0f;
-		CEffectManager::m_LightParameters.m_UseShadowMask[IdLight] = l_ShadowMask != NULL ? 1.0f : 0.0f;
+		//CEffectManager::m_LightParameters.m_UseShadowMask[IdLight] = l_ShadowMask != NULL ? 1.0f : 0.0f;
+		CEffectManager::m_LightParameters.m_UseShadowMask[IdLight] = 0.0f;
 		CEffectManager::m_LightParameters.m_LightView[IdLight] = Light->GetViewShadowMap();
 		CEffectManager::m_LightParameters.m_LightProjection[IdLight] = Light->GetProjectionShadowMap();
 		if (l_ShadowMap != NULL)
 		{
 			l_ShadowMap->Activate(INDEX_SHADOWMAP_TEXTURE);
+			l_ShadowMapPrint->Activate(INDEX_SHADOWMAP_TEXTURE + 1);
 		}
 		else
 		{
@@ -172,8 +175,8 @@ void CEffectManager::SetLightConstants(unsigned int IdLight, CLight *Light)
 			l_ShadowMap = Light->GetShadowMap();
 			l_ShadowMap->Activate(INDEX_SHADOWMAP_TEXTURE);
 		}
-		if (l_ShadowMask != NULL)
-			l_ShadowMask->Activate(INDEX_SHADOWMAP_TEXTURE+1);
+		//if (l_ShadowMask != NULL)
+		//	l_ShadowMask->Activate(INDEX_SHADOWMAP_TEXTURE+1);
 	}
 	else
 	{
