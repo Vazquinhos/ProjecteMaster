@@ -54,7 +54,7 @@ protected:
 
 public:
 	UAB_BUILD_GET_SET(CDynamicTexture*, ShadowMapPrint);
-
+	UAB_BUILD_GET_SET(CDynamicTexture*, ShadowMapBlur);
 	CLight(CXMLTreeNode &TreeNode);
 	CLight(std::string _name);
 	CLight();

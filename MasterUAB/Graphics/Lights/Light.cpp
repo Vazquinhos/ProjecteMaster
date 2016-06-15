@@ -51,6 +51,7 @@ CLight::CLight(CXMLTreeNode &TreeNode) : CNamed(TreeNode), C3DElement(TreeNode)
 
 		m_ShadowMap = new CDynamicTexture("shadowmap", l_Width, l_Height, true, l_Format);
 		m_ShadowMapPrint = new CDynamicTexture("shadowmap_print", l_Width, l_Height, true, l_Format);
+		m_ShadowMapBlur = new CDynamicTexture("shadowmap_blur", l_Width, l_Height, true, l_Format);
 		//m_ShadowMaskTexture = new CTexture();
 		m_ShadowMaskTexture = nullptr;
 	}
@@ -58,6 +59,8 @@ CLight::CLight(CXMLTreeNode &TreeNode) : CNamed(TreeNode), C3DElement(TreeNode)
 	{
 		m_ShadowMap = nullptr;
 		m_ShadowMaskTexture = nullptr;
+		m_ShadowMapPrint = nullptr;
+		m_ShadowMapBlur = nullptr;
 	}
 }
 

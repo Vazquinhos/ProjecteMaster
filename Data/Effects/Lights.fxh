@@ -15,7 +15,7 @@ float4 shadowMapCalc(float3 l_WorldPosition)
 		float l_DepthShadowMap=T6Texture.Sample(S6Sampler, l_ProjectedLightCoords).r;
 		float l_LightDepth=l_LightViewPosition.z/l_LightViewPosition.w;
 		float m_ShadowMapBias = 0.01f;
-		//l_DepthShadowMap=l_DepthShadowMap+m_ShadowMapBias;
+		l_DepthShadowMap=l_DepthShadowMap+m_ShadowMapBias;
 		if((saturate(l_ProjectedLightCoords.x)==l_ProjectedLightCoords.x) && (saturate(l_ProjectedLightCoords.y)==l_ProjectedLightCoords.y))
 		{
 			/*if(l_LightDepth>l_DepthShadowMap)
@@ -67,6 +67,8 @@ float4 spotLight(float3 l_WorldPosition, float3 Nn, float4 l_albedo, int lightIn
 	specular *= l_SpotAttenuation;
 	specular *= l_DistanceAttenuation;
 	
+	
+	return l_albedo;
 	float4 outLight = float4((l_albedo*l_DiffuseContrib*l_DistanceAttenuation*l_SpotAttenuation*m_LightColor[lightIndex]*m_LightIntensityArray[lightIndex]+specular*m_LightIntensityArray[lightIndex]).xyz,1);
 		
 	return saturate(outLight);

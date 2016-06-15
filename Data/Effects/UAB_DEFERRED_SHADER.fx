@@ -49,7 +49,7 @@ float3 GetPositionFromZDepthView(float ZDepthView, float2 UV, float4x4 InverseVi
 
 float4 mainPS(PS_INPUT IN) : SV_Target
 {		
-	return float4(T7Texture.Sample(S7Sampler, IN.UV).xyz,1);
+	//return float4(T5Texture.Sample(S5Sampler, IN.UV).xyz,1);
 	float l_Depth=T3Texture.Sample(S3Sampler, IN.UV).r;
 	float3 l_WorldPosition=GetPositionFromZDepthView(l_Depth, IN.UV, m_InverseView, m_InverseProjection);
 	float3 Nn=Texture2Normal(T2Texture.Sample(S2Sampler, IN.UV).xyz);
@@ -58,6 +58,13 @@ float4 mainPS(PS_INPUT IN) : SV_Target
 	float l_SpecularFactor = l_albedo.w;
 	float l_SpecularPower = lightmap.w*100;
 	float4 l_Out = applyLights(l_WorldPosition, Nn, l_albedo, 0, l_SpecularPower, l_SpecularFactor);
-	return l_Out * shadowMapCalc(l_WorldPosition).x;
-	//return l_Out * T6Texture.Sample(S6Sampler, IN.UV);
+	if(m_UseShadowMapArray[0]==1.0)
+	{
+		return float4(T6Texture.Sample(S6Sampler, IN.UV).x,0,1,1);
+		//return l_Out * T5Texture.Sample(S5Sampler, IN.UV).x;
+	}
+	else
+	{
+		return l_Out;
+	}
 }
