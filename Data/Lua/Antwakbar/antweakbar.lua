@@ -271,15 +271,15 @@ function RegisterLightParameters(light_name)
 	if(Light:get_type()==1)then
 		-- DIRECTIONAL
 		local Directional = LightsManager:get_resource(light_name)
-		DebugHelper:add_variable("X:",CDebugHelper.float,CDebugHelper.read_write,Directional:get_direction_lua_address(0),"min=0.0 max=250.0 step=1.0 group=\"Direction\"")
-		DebugHelper:add_variable("Y:",CDebugHelper.float,CDebugHelper.read_write,Directional:get_direction_lua_address(1),"min=0.0 max=250.0 step=1.0 group=\"Direction\"")
-		DebugHelper:add_variable("Z:",CDebugHelper.float,CDebugHelper.read_write,Directional:get_direction_lua_address(2),"min=0.0 max=250.0 step=1.0 group=\"Direction\"")
+		DebugHelper:add_variable("X:",CDebugHelper.float,CDebugHelper.read_write,Directional:get_direction_lua_address(0),"min=-250.0 max=250.0 step=1.0 group=\"Direction\"")
+		DebugHelper:add_variable("Y:",CDebugHelper.float,CDebugHelper.read_write,Directional:get_direction_lua_address(1),"min=-250.0 max=250.0 step=1.0 group=\"Direction\"")
+		DebugHelper:add_variable("Z:",CDebugHelper.float,CDebugHelper.read_write,Directional:get_direction_lua_address(2),"min=-250.0 max=250.0 step=1.0 group=\"Direction\"")
 	elseif(Light:get_type()==2)then
 		-- SPOT
 		local Spot = LightsManager:get_resource(light_name)
-		DebugHelper:add_variable("X:",CDebugHelper.float,CDebugHelper.read_write,Spot:get_direction_lua_address(0),"min=0.0 max=250.0 step=1.0 group=\"Direction\"")
-		DebugHelper:add_variable("Y:",CDebugHelper.float,CDebugHelper.read_write,Spot:get_direction_lua_address(1),"min=0.0 max=250.0 step=1.0 group=\"Direction\"")
-		DebugHelper:add_variable("Z:",CDebugHelper.float,CDebugHelper.read_write,Spot:get_direction_lua_address(2),"min=0.0 max=250.0 step=1.0 group=\"Direction\"")
+		DebugHelper:add_variable("X:",CDebugHelper.float,CDebugHelper.read_write,Spot:get_direction_lua_address(0),"min=-250.0 max=250.0 step=1.0 group=\"Direction\"")
+		DebugHelper:add_variable("Y:",CDebugHelper.float,CDebugHelper.read_write,Spot:get_direction_lua_address(1),"min=-250.0 max=250.0 step=1.0 group=\"Direction\"")
+		DebugHelper:add_variable("Z:",CDebugHelper.float,CDebugHelper.read_write,Spot:get_direction_lua_address(2),"min=-250.0 max=250.0 step=1.0 group=\"Direction\"")
 		DebugHelper:add_variable("Angle:",CDebugHelper.float,CDebugHelper.read_write,Spot:get_angle_lua_address(),"")
 		DebugHelper:add_variable("FallOff:",CDebugHelper.float,CDebugHelper.read_write,Spot:get_falloff_lua_address(),"")
 	end

@@ -12,6 +12,10 @@
 		<texture type="diffuse" filename="Data\GUI\Textures\noise.dds"/>
 		<texture type="diffuse" filename="Data\GUI\Textures\vignetting.dds"/>
 	</material>
+	<material name="BlurShadowMaterial" renderable_object_technique="blur">
+		<parameter name ="texture_size" type="float" value="1280.0"/>
+		<parameter name ="blur_scale" type="float" value="5.0"/>
+	</material>
 	<material name="BlurMaterial" renderable_object_technique="blur">
 		<parameter name ="texture_size" type="float" value="1280.0"/>
 		<parameter name ="blur_scale" type="float" value="2.0"/>

@@ -23,20 +23,20 @@
 	
 	<unset_render_target name="unset render target"/>
 	
-	<!----------------------MIERDA URI------------------------------->
 	
-	<clear name="clear TF defferred shadow shading" render_target="true" depth_stencil="false"/>
-	<set_depth_stencil_state name="set depth stencil FF defferred shadow shading" enable_z_test="false" write_z_buffer="false"/>
+	<!-- MIERDA URI -->
+	<set_depth_stencil_state name="set depth stencil FF defferred shadow shading" enable_z_test="false" write_z_buffer="false" />
 	
-	<set_pool_renderable_objects_technique name="set_pool_defferred_shadow_shading" pool="deferred_shading_shadow"/>
+	<set_pool_renderable_objects_technique name="set_pool_defferred_shadow_shading" pool="deferred_shading_shadow" />
 	
-	<render_shadow_shading name="render defferred shadow shading">
+	<render_shadow_print name="render defferred shadow shading">
 		<texture stage_id="0" file="DepthMapTexture" load_file="false"/>
-	</render_shadow_shading>
-	
-	<!----------------------------------------------------->
-	
-	
+	</render_shadow_print>
+
+
+
+
+	<set_pool_renderable_objects_technique name="render Lightmap set pool" pool="gBuffer"/>
 	<clear name="clear TF defferred" render_target="true" depth_stencil="false"/>
 	<set_depth_stencil_state name="set depth stencil FF defferred" enable_z_test="false" write_z_buffer="false"/>
 	<render_draw_quad name="draw quad LightMapTexture" active="true">
